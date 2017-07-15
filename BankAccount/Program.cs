@@ -29,8 +29,8 @@ namespace BankAccount
             decimal deposit = 0;
             decimal depositAmount = 0;
             decimal withdraw = 0;           
-            decimal checkingBalance = 0.0m;
-            decimal savingsBalance = 0.0m;
+            decimal chkBalance = 0.0m;
+            decimal savBalance = 0.0m;
             
 
             if (answerYN == "n" || answerYN == "no")
@@ -58,7 +58,7 @@ namespace BankAccount
                 Console.WriteLine("What is your birth year?");
                 birthYear = int.Parse(Console.ReadLine());
 
-                CheckingAccount account1 = new CheckingAccount(deposit, withdraw, checkingBalance);
+                CheckingAccount account1 = new CheckingAccount(deposit, withdraw, 0);
                 Console.WriteLine("Would you like to make a deposit today?\n" +
                 "Yes/No ");
                 string accountAnswer = Console.ReadLine().ToLower();
@@ -77,7 +77,7 @@ namespace BankAccount
                             deposit = decimal.Parse(Console.ReadLine());
                             deposit = depositAmount;
                             account1.AddToCheckingAccount();
-                            Console.WriteLine(checkingBalance);
+                            Console.WriteLine(chkBalance);
                             Console.WriteLine("Would you like to make another deposit?");
                             accountAnswer = Console.ReadLine().ToLower();
                         }
@@ -128,12 +128,14 @@ namespace BankAccount
 
                         if (selectionKey == "a")
                         {
-                            account1.GetChkBalance();                                                      
+                            account1.GetChkBalance();
+                            Console.WriteLine(account1.GetChkBalance().ToString("C2"));
                             AccountAnswer();
                         }
                         else if (selectionKey == "b")
                         {
-                            account1.GetSavBalance();                          
+                            account1.GetSavBalance();
+                            Console.WriteLine(account1.GetSavBalance().ToString("C2"));
                             AccountAnswer();
                         }
                         else
@@ -192,13 +194,13 @@ namespace BankAccount
                         1899);
 
 
-                    SavingsAccount account2 = new SavingsAccount(depositAmount, withdraw, savingsBalance);
+                    SavingsAccount account2 = new SavingsAccount(500m, withdraw, 45908763.0m);
+                  
+                    CheckingAccount account3 = new CheckingAccount(depositAmount, withdraw, 23324342.0m);
                     
-                    CheckingAccount account3 = new CheckingAccount(depositAmount, withdraw, checkingBalance);
-                    account3.CheckingBalance = 23324342.0m;
-                    //account2.savingsBalance = 45908763.0m;
+                    
 
-                    Console.WriteLine(savingsBalance);
+                    Console.WriteLine(savBalance);
                     Console.WriteLine("MAIN MENU:");
 
                     Console.WriteLine("Please choose from the following options.\n");
@@ -223,8 +225,8 @@ namespace BankAccount
 
                         if (selectionKey == "a")
                         {
-                            account2.GetChkBalance();
-                            Console.WriteLine("Your checking account balance is: " + account2.GetChkBalance().ToString("C2"));
+                            account3.GetChkBalance();
+                            Console.WriteLine("Your checking account balance is: " + account3.GetChkBalance().ToString("C2"));
                             AccountAnswer();
                         }
                         else if (selectionKey == "b")
@@ -261,16 +263,16 @@ namespace BankAccount
                             deposit = depositAmount;
                             account3.DepositMade();
                             account3.AddToCheckingAccount();
-                            account3.GetCheckAccNumber().ToString("C2");
+                            account3.GetChkBalance().ToString("C2");
                             //tring newBalance = account2.GetCheckAccNumber();
-                            Console.WriteLine("Your new balance is :" + account2.GetCheckAccNumber().ToString("C2"));
+                            Console.WriteLine("Your new balance is :" + account2.GetChkBalance().ToString("C2"));
                             Console.WriteLine("Would you like to make another deposit?");
                             accountAnswer = Console.ReadLine().ToLower();
                         }
                         else if (accountAnswer == "b")
                         {
                             Console.WriteLine("How much would you like to deposit today in your checking account?");
-                            savingsBalance = decimal.Parse(Console.ReadLine());
+                            deposit = decimal.Parse(Console.ReadLine());
                             Console.WriteLine("Would you like to make another deposit?");
                             accountAnswer = Console.ReadLine().ToLower();
                         }

@@ -11,21 +11,22 @@ namespace BankAccount
 
         protected decimal depositAmount;
         protected decimal withdraw;
-        protected decimal savingsBalance;
-
+      
         public decimal DepositAmount { get; set; }
         public decimal Withdraw { get; set; }
-        public decimal SavingsBalance { get; set; }
+        
         
         
         
         
 
-        public SavingsAccount(int accountNumber, decimal savingsBalance)
+        public SavingsAccount(decimal withdraw, decimal depositAmount, decimal savingsAccountBalance)
         {
-            
-            
-            this.savingsBalance = savingsBalance;
+
+            this.withdraw = withdraw;
+            this.depositAmount = depositAmount;
+            this.savingsAccountBalance = savingsAccountBalance;
+         
         
            
         }
@@ -41,8 +42,17 @@ namespace BankAccount
         }
         public override decimal GetSavBalance()
         {
-            return savingsBalance;
+            return savingsAccountBalance;
         }
-
+        public decimal DepositMade()
+        {
+            deposit = DepositAmount;
+            return deposit;
+        }
+        public decimal WithdrawalMade()
+        {
+            withdraw = Withdraw;
+            return withdraw;
+        }
     }
 }

@@ -10,37 +10,37 @@ namespace BankAccount
     {
         protected decimal depositAmount;
         protected decimal withdraw;
-        protected decimal checkingBalance;
+        
 
         public decimal DepositAmount { get; set; }
         public decimal Withdraw { get; set; }
-        public decimal CheckingBalance { get; set; }
+       
 
         public CheckingAccount()
         {
             //default constructor
         }
-        public CheckingAccount(decimal depositAmount, decimal withdraw, decimal checkingBalance)
+        public CheckingAccount(decimal depositAmount, decimal withdraw, decimal checkingAccountBalance)
         {
 
             this.depositAmount = depositAmount;
             this.withdraw = withdraw;
-            this.checkingBalance = checkingBalance;
-
+            this.checkingAccountBalance = checkingAccountBalance;
+            
         }
 
         public override decimal AddToCheckingAccount()
         {
 
-            checkingBalance += depositAmount;
-            return checkingBalance;
+            checkingAccountBalance += depositAmount;
+            return checkingAccountBalance;
 
         }
         public override decimal SubtractFromChecking()
         {
 
-            checkingBalance -= withdraw;
-            return checkingBalance;
+            checkingAccountBalance -= withdraw;
+            return checkingAccountBalance;
 
         }
         public decimal DepositMade()
