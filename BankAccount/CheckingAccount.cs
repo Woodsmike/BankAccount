@@ -8,34 +8,54 @@ namespace BankAccount
 {
     class CheckingAccount : Account
     {
-        public string lastName;
-        public string firstName;
-        protected int lastFourOfSocial = 0000;
-        protected int birthYear = 1920;
-        public decimal checkingAccountBalance = 0.0m;
+        protected decimal depositAmount;
+        protected decimal withdraw;
+        protected decimal checkingBalance;
 
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public decimal CheckingAccountBalance { get; set; }
-        public int LastFourOfSocial { get; }
+        public decimal DepositAmount { get; set; }
+        public decimal Withdraw { get; set; }
+        public decimal CheckingBalance { get; set; }
 
         public CheckingAccount()
         {
             //default constructor
         }
-        public CheckingAccount(string lastName, string firstName,
-            int lastFourOfSocial, int birthYear, decimal checkingAccountBalance)
+        public CheckingAccount(decimal depositAmount, decimal withdraw, decimal checkingBalance)
         {
-            this.lastName = lastName;
-            this.firstName = firstName;
-            this.lastFourOfSocial = lastFourOfSocial;
-            this.birthYear = birthYear;
-            this.checkingAccountBalance = checkingAccountBalance;
+
+            this.depositAmount = depositAmount;
+            this.withdraw = withdraw;
+            this.checkingBalance = checkingBalance;
+
         }
-        public override decimal AccountBalance(decimal checkingAccountBalance)
+
+        public override decimal AddToCheckingAccount()
         {
-            //Console.WriteLine("Your account balance is: {0}", accountBalance);
-            return this.checkingAccountBalance;
+
+            checkingBalance += depositAmount;
+            return checkingBalance;
+
         }
+        public override decimal SubtractFromChecking()
+        {
+
+            checkingBalance -= withdraw;
+            return checkingBalance;
+
+        }
+        public decimal DepositMade()
+        {
+            deposit = DepositAmount;
+            return deposit;
+        }
+        public decimal WithdrawalMade()
+        {
+            withdraw = Withdraw;
+            return withdraw;
+        }
+        //public override decimal GetChkBalance()
+        //{
+        //    return checkingBalance;
+        //}
     }
 }

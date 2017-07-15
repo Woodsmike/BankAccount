@@ -8,21 +8,31 @@ namespace BankAccount
 {
     class Client : ClientBase
     {
-        public string lastName { get; set; }
-        public string firstName { get; set; }
+        private string lastName;
+        private string firstName;
+        public int houseNumber;
+        public string streetName;
+        public double phoneNumber;
         protected int lastFourOfSocial;
         protected int birthYear;
-        protected decimal accountBalance { get; }
-        public int houseNumber { get; set; }
-        public string streetName { get; set; }
-        public double phoneNumber { get; set; }
+        public decimal addToChecking = 0.0m;
+        private decimal checkingAccountBalance = 0.0m;
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }       
+        public int HouseNumber { get; set; }
+        public string StreetName { get; set; }
+        public double PhoneNumber { get; set; }
+        public decimal AddToChecking { get; set; }
+        public int AccountNumber { get; }
+
 
         public Client()
         {
             //default constructor
         }
         public Client(string lastName, string firstName, int houseNumber, string streetName,
-            double phoneNumber, int lastFourOfSocial, int birthYear, decimal accountBalance)
+            double phoneNumber, int lastFourOfSocial, int birthYear)
         {
             this.lastName = lastName;
             this.firstName = firstName;
@@ -31,6 +41,8 @@ namespace BankAccount
             this.phoneNumber = phoneNumber;
             this.lastFourOfSocial = lastFourOfSocial;
             this.birthYear = birthYear;
+         
+            
         }
         public virtual void ClientInfo()
         {
@@ -39,20 +51,7 @@ namespace BankAccount
             Console.WriteLine("Customer's phone number (cell) {0} ", phoneNumber);
         }
 
-        public void AccountChoice()
-        {
-            Console.WriteLine("a. Checking Account");
-            Console.WriteLine("b. Savings Account");
-            string selectionKey = Console.ReadLine();
-            Console.Clear();
-
-            if(selectionKey == "a")
-            {
-                Console.WriteLine(AccountBalance(this.accountBalance));
-            }
-            
-
-        }
+        
         public override void SearchAccount(string lastName, string firstName,
           int lastFourOfSocial, int birthYear)
         {

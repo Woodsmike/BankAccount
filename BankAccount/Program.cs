@@ -10,12 +10,8 @@ namespace BankAccount
     {
         static void Main(string[] args)
         {
-
-
             string selectionKey = " ";
             int number = 0;
-            string exit = " ";
-
 
             Console.Clear();
             Console.WriteLine("Welcome to Steal'em Robb'em Blind Bank!\n\n");
@@ -28,8 +24,14 @@ namespace BankAccount
             double phoneNumber;
             int lastFourOfSocial;
             int birthYear;
-            decimal checkingAccountBalance = 0.0m;
-            decimal savingsAccountBalance = 0.0m;
+            int checkAccNumber;
+            int savAccNumber;
+            decimal deposit = 0;
+            decimal depositAmount = 0;
+            decimal withdraw = 0;           
+            decimal checkingBalance = 0.0m;
+            decimal savingsBalance = 0.0m;
+            
 
             if (answerYN == "n" || answerYN == "no")
             {
@@ -56,7 +58,7 @@ namespace BankAccount
                 Console.WriteLine("What is your birth year?");
                 birthYear = int.Parse(Console.ReadLine());
 
-
+                CheckingAccount account1 = new CheckingAccount(deposit, withdraw, checkingBalance);
                 Console.WriteLine("Would you like to make a deposit today?\n" +
                 "Yes/No ");
                 string accountAnswer = Console.ReadLine().ToLower();
@@ -72,14 +74,19 @@ namespace BankAccount
                         if (accountAnswer == "checking")
                         {
                             Console.WriteLine("How much would you like to deposit today in your checking account?");
-                            checkingAccountBalance = decimal.Parse(Console.ReadLine());
+                            deposit = decimal.Parse(Console.ReadLine());
+                            deposit = depositAmount;
+                            account1.AddToCheckingAccount();
+                            Console.WriteLine(checkingBalance);
                             Console.WriteLine("Would you like to make another deposit?");
                             accountAnswer = Console.ReadLine().ToLower();
                         }
                         else if (accountAnswer == "savings")
                         {
                             Console.WriteLine("How much would you like to deposit today in your checking account?");
-                            savingsAccountBalance = decimal.Parse(Console.ReadLine());
+                            deposit = decimal.Parse(Console.ReadLine());
+                            deposit = depositAmount;
+                            account1.AddToSavingsAccount();
                             Console.WriteLine("Would you like to make another deposit?");
                             accountAnswer = Console.ReadLine().ToLower();
                         }
@@ -93,9 +100,8 @@ namespace BankAccount
                 do
                 {
                     Client client1 = new Client(lastName, firstName, houseNumber, streetName, phoneNumber,
-                lastFourOfSocial, birthYear, checkingAccountBalance);
-
-
+                    lastFourOfSocial, birthYear);
+                    
                     Console.Clear();
                     client1.ClientInfo();
                     Console.WriteLine("MAIN MENU:");
@@ -112,6 +118,7 @@ namespace BankAccount
                     if (selectionKey == "1")
                     {
                         client1.ClientInfo();
+                        AccountAnswer();
                     }
                     else if (selectionKey == "2")
                     {
@@ -121,38 +128,56 @@ namespace BankAccount
 
                         if (selectionKey == "a")
                         {
-                            client1.AccountBalance(checkingAccountBalance);
-                            decimal cab = client1.AccountBalance(checkingAccountBalance);
-                            Console.WriteLine("This is your checking account balance: " + cab.ToString("C2"));
-                            Console.WriteLine("Please hit any key to continue");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            account1.GetChkBalance();                                                      
+                            AccountAnswer();
                         }
                         else if (selectionKey == "b")
                         {
-                            client1.AccountBalance(savingsAccountBalance);
-                            decimal cab = client1.AccountBalance(savingsAccountBalance);
-                            Console.WriteLine("This is your saving account balance: " + cab.ToString("C2"));
-                            Console.WriteLine("Please hit any key to continue");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            account1.GetSavBalance();                          
+                            AccountAnswer();
                         }
                         else
                         {
                             break;
                         }
                     }
-                    else if(selectionKey == "3")
+                    else if (selectionKey == "3")
                     {
-                        client1.ClientInfo();
+                        Console.WriteLine("Checking or Savings?");
+                        accountAnswer = Console.ReadLine().ToLower();
+                        
+                        if (accountAnswer == "checking")
+                        {
+                            Console.WriteLine("How much would you like to deposit today in your checking account?");
+                            deposit = decimal.Parse(Console.ReadLine());
+                            account1.AddToCheckingAccount();
+                            Console.WriteLine("Would you like to make another deposit?");
+                            accountAnswer = Console.ReadLine().ToLower();
+                        }
+                        else if (accountAnswer == "savings")
+                        {
+                            Console.WriteLine("How much would you like to deposit today in your checking account?");
+                            deposit = decimal.Parse(Console.ReadLine());
+                            Console.WriteLine("Would you like to make another deposit?");
+                            accountAnswer = Console.ReadLine().ToLower();
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Please enter Checking or Savings.  Or type" +
+                                "'exit' to return");
+                            AccountAnswer();
+                        }
 
                     }
-                    else if(selectionKey == "4")
+                    else if (selectionKey == "4")
                     {
                         client1.ClientInfo();
                     }
                     else
                     {
                         Exit();
-                    }                      
+                    }
 
                 } while (selectionKey != "5");
             }
@@ -161,12 +186,19 @@ namespace BankAccount
             {
                 do
                 {
-                    
+
                     Console.Clear();
-                    Client client2 = new Client("Capone", "Al", 6, "foot under park", 2160010001,
-                    6666, 1899, 0m);
-                    checkingAccountBalance = 23324342m;
-                    Console.WriteLine(checkingAccountBalance);
+                    Client client2 = new Client("Capone", "Al", 6, " Feet Under Park", 2120010001, 0001,
+                        1899);
+
+
+                    SavingsAccount account2 = new SavingsAccount(depositAmount, withdraw, savingsBalance);
+                    
+                    CheckingAccount account3 = new CheckingAccount(depositAmount, withdraw, checkingBalance);
+                    account3.CheckingBalance = 23324342.0m;
+                    //account2.savingsBalance = 45908763.0m;
+
+                    Console.WriteLine(savingsBalance);
                     Console.WriteLine("MAIN MENU:");
 
                     Console.WriteLine("Please choose from the following options.\n");
@@ -181,6 +213,7 @@ namespace BankAccount
                     if (selectionKey == "1")
                     {
                         client2.ClientInfo();
+                        AccountAnswer();
                     }
                     else if (selectionKey == "2")
                     {
@@ -190,19 +223,15 @@ namespace BankAccount
 
                         if (selectionKey == "a")
                         {
-                            client2.AccountBalance(checkingAccountBalance);
-                            decimal cab = client2.AccountBalance(checkingAccountBalance);
-                            Console.WriteLine("This is your checking account balance: " + cab.ToString("C2"));
-                            Console.WriteLine("Please hit any key to continue");
-                            string accountAnswer = Console.ReadLine().ToLower();
+                            account2.GetChkBalance();
+                            Console.WriteLine("Your checking account balance is: " + account2.GetChkBalance().ToString("C2"));
+                            AccountAnswer();
                         }
                         else if (selectionKey == "b")
                         {
-                            client2.AccountBalance(savingsAccountBalance);
-                            decimal cab = client2.AccountBalance(savingsAccountBalance);
-                            Console.WriteLine("This is your saving account balance: " + cab.ToString("C2"));
-                            Console.WriteLine("Please hit any key to continue");
-                            string accountAnswer = Console.ReadLine().ToLower();
+                            account2.GetSavBalance().ToString("C2");
+                            Console.WriteLine("Your checking account balance is: " + account2.GetSavBalance().ToString("C2"));
+                            AccountAnswer();
                         }
                         else
                         {
@@ -211,9 +240,47 @@ namespace BankAccount
                     }
                     else if (selectionKey == "3")
                     {
-                        client2.ClientInfo();
+                        //Console.WriteLine("Would you like to make a deposit today?\n" +
+                        //"Yes/No ");
+                        //string accountAnswer = Console.ReadLine().ToLower();
+                        //while (accountAnswer != "no" && accountAnswer != "n")
+                        //{
+                        //    Console.Clear();
 
+                        //    if (accountAnswer == "yes" || accountAnswer == "y")
+                        //    {
+
+                        Console.WriteLine("a. Checking Account\nb. Savings account");
+                        string accountAnswer = Console.ReadLine().ToLower();
+                        Console.Clear();
+                        if (accountAnswer == "a")
+                        {
+                            Console.Clear();
+                            Console.WriteLine("How much would you like to deposit today in your checking account?");
+                            deposit = decimal.Parse(Console.ReadLine());
+                            deposit = depositAmount;
+                            account3.DepositMade();
+                            account3.AddToCheckingAccount();
+                            account3.GetCheckAccNumber().ToString("C2");
+                            //tring newBalance = account2.GetCheckAccNumber();
+                            Console.WriteLine("Your new balance is :" + account2.GetCheckAccNumber().ToString("C2"));
+                            Console.WriteLine("Would you like to make another deposit?");
+                            accountAnswer = Console.ReadLine().ToLower();
+                        }
+                        else if (accountAnswer == "b")
+                        {
+                            Console.WriteLine("How much would you like to deposit today in your checking account?");
+                            savingsBalance = decimal.Parse(Console.ReadLine());
+                            Console.WriteLine("Would you like to make another deposit?");
+                            accountAnswer = Console.ReadLine().ToLower();
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Continue");
+                        }
                     }
+
                     else if (selectionKey == "4")
                     {
                         client2.ClientInfo();
@@ -227,22 +294,24 @@ namespace BankAccount
                 Console.WriteLine("Please press the enter key" +
                 " or to go back to the main menu or type 'Exit' to quit.");
 
-                  
-                } while (selectionKey != "5");
 
-            
+            } while (selectionKey != "5") ;
+
+
         }
         public static void Exit()
         {
-            //string exit = Console.ReadLine().ToLower();
-            //if (exit == "exit")
-            //{
-                Console.Clear();
-                Console.WriteLine("Thank you for banking at Steal'em Robb'em Blind Bank!");
-                Environment.Exit(0);
-                return;
-            //}
 
+            Console.Clear();
+            Console.WriteLine("Thank you for banking at Steal'em Robb'em Blind Bank!");
+            Environment.Exit(0);
+            return;
+        }
+        public static void AccountAnswer()
+        {
+            string accountAnswer;
+            Console.WriteLine("Please hit any key to continue");
+            accountAnswer = Console.ReadLine().ToLower();
         }
     }
 }

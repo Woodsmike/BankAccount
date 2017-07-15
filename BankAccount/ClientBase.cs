@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    abstract class ClientBase : Account
+    abstract class ClientBase
     {
-        public override void SearchAccount(string lastName, string firstName,
+        public virtual void SearchAccount(string lastName, string firstName,
           int lastFourOfSocial, int birthYear)
         {
 
