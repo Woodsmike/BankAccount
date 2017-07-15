@@ -6,11 +6,30 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    abstract class Account
+    class Account
     {
-        public abstract void SearchAccount(/*string lastName, string firstName,*/
-            int lastFourOfSocial, int birthYear);
+        decimal accountBalance = 0;
+        string lastName;
+        string firstName;
+        int lastFourSocial;
+        int birthYear;
+        
+
+        public virtual void SearchAccount(string lastName, string firstName,
+            int lastFourOfSocial, int birthYear)
+        {
+
+        }
+
+        public virtual decimal AccountBalance(decimal accountBalance)
+        {
+            return accountBalance;
+        }
     
+        public Account()
+        {
+            //default constructor
+        }
     }
 
 }

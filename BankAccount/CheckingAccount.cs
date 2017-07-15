@@ -8,39 +8,34 @@ namespace BankAccount
 {
     class CheckingAccount : Account
     {
-        public string lastName { get; }
-        public string firstName { get; }
+        public string lastName;
+        public string firstName;
         protected int lastFourOfSocial = 0000;
         protected int birthYear = 1920;
-        public double accountBalance = 0.0d;
+        public decimal checkingAccountBalance = 0.0m;
+
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public decimal CheckingAccountBalance { get; set; }
+        public int LastFourOfSocial { get; }
 
         public CheckingAccount()
         {
             //default constructor
         }
         public CheckingAccount(string lastName, string firstName,
-            int lastFourOfSocial, int birthYear, double accountBalance)
+            int lastFourOfSocial, int birthYear, decimal checkingAccountBalance)
         {
             this.lastName = lastName;
             this.firstName = firstName;
             this.lastFourOfSocial = lastFourOfSocial;
             this.birthYear = birthYear;
-            this.accountBalance = accountBalance;
+            this.checkingAccountBalance = checkingAccountBalance;
         }
-
-        public override void SearchAccount(/*string lastName, string firstName,*/
-            int lastFourOfSocial, int birthYear)
+        public override decimal AccountBalance(decimal checkingAccountBalance)
         {
-            //this.firstName = firstName;
-            //this.lastName = lastName;
-            this.birthYear = birthYear;
-            this.lastFourOfSocial = lastFourOfSocial;
-
-            if (lastFourOfSocial == this.lastFourOfSocial)
-            {
-                Console.WriteLine(firstName + "\n" + lastName + "\n" + birthYear + "\n" + lastFourOfSocial);
-            }
-
+            //Console.WriteLine("Your account balance is: {0}", accountBalance);
+            return this.checkingAccountBalance;
         }
     }
 }
