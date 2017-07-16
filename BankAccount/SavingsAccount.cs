@@ -9,50 +9,56 @@ namespace BankAccount
     class SavingsAccount : Account
     {
 
-        protected decimal depositAmount;
-        protected decimal withdraw;
-      
-        public decimal DepositAmount { get; set; }
-        public decimal Withdraw { get; set; }
-        
-        
-        
-        
-        
+        protected double savingsAccountBalance = 5000000;
+        protected double deposit;
+        protected double withdraw;
 
-        public SavingsAccount(decimal withdraw, decimal depositAmount, decimal savingsAccountBalance)
+        public double SavingsAccountBalance
         {
-
-            this.withdraw = withdraw;
-            this.depositAmount = depositAmount;
-            this.savingsAccountBalance = savingsAccountBalance;
-         
-        
-           
+            get { return this.savingsAccountBalance; }
+            set { this.savingsAccountBalance = value; }
         }
+        public double Deposit { get; set; }
+        public double Withdraw { get; set; }
+
 
         public SavingsAccount()
         {
             //default constructor
         }
-        public override decimal AddToSavingsAccount()
+
+        public SavingsAccount(double withdraw, double deposit)
         {
-            return deposit;
+
+            this.withdraw = withdraw;
+            this.deposit = deposit;       
 
         }
-        public override decimal GetSavBalance()
+
+
+        public double AddToSavingsAccount(double deposit)
+        {
+            return deposit += savingsAccountBalance;
+
+        }
+        public double GetSavBalance()
         {
             return savingsAccountBalance;
         }
-        public decimal DepositMade()
+        public override double SubtractFromSavings(double withdraw)
         {
-            deposit = DepositAmount;
-            return deposit;
+            return withdraw -= savingsAccountBalance;
+
         }
-        public decimal WithdrawalMade()
+        public double WithdrawalMade()
         {
             withdraw = Withdraw;
             return withdraw;
         }
+        //public double SaveDepositAmount(double deposit)
+        //{
+        //    deposit = Deposit;
+        //    return deposit;
+        //}
     }
 }

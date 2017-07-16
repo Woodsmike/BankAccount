@@ -9,31 +9,26 @@ namespace BankAccount
     class Account
     {
         protected string accountType;
-        protected int checkingAccountNumber = 0;
-        protected int savingsAccountNumber = 0;
-        protected decimal deposit;
-        protected decimal withdrawFromAccount;
-        protected decimal checkingAccountBalance;
-        protected decimal savingsAccountBalance;
-
+        protected int checkingAccountNumber;
+        protected int savingsAccountNumber;
+        //protected double deposit;
+        //protected double withdrawFromAccount;
+        
         public string AccountType { get; set; }
         public int CheckingAccountNumber { get; set; }
         public int SavingsAccountNumber { get; set; }
-        public decimal WithdrawFromAccount { get; set; }          
-        public decimal Deposit { get; set; }
-        public decimal CheckingAccountBalance { get; set; }
-        public decimal SavingsAccountBalance { get; set; }
+        //public double WithdrawFromAccount { get; set; }          
+        //public double Deposit { get; set; }
+        
 
-        public Account(string accountType, int chkAccNum, int savAccNum, decimal withDraw, decimal deposit,
-            decimal chkBalance, decimal savBalance)
+        public Account(string accountType, int chkAccNum, int savAccNum)
         {
             this.accountType = accountType;
             this.checkingAccountNumber = chkAccNum;
             this.savingsAccountNumber = savAccNum;
-            this.withdrawFromAccount = withDraw;
-            this.deposit = deposit;
-            this.checkingAccountBalance = chkBalance;
-            this.savingsAccountBalance = savBalance;
+            //this.withdrawFromAccount = withDraw;
+            //this.deposit = deposit;
+         
         }
 
         public Account()
@@ -42,44 +37,43 @@ namespace BankAccount
         }
         public virtual string GetAccountType()
         {
-            return accountType;
+            return AccountType;
         }
         public virtual int GetCheckAccNumber()
         {
-            return checkingAccountNumber;
+            return CheckingAccountNumber;
         }
         public virtual int GetSavingsAccNumber()
         {
-            return savingsAccountNumber;
+            return SavingsAccountNumber;
         }
-        public virtual decimal AddToCheckingAccount()
-        {
-            return deposit;
-           
-        }
-        public virtual decimal AddToSavingsAccount()
-        {
-            return deposit;
+        //public virtual double AddToCheckingAccount(double deposit)
+        //{
+            
+        //    return deposit;
 
-        }
-        public virtual decimal SubtractFromChecking()
+        //}
+        //public virtual double AddToSavingsAccount(double deposit)
+        //{
+        //    return deposit;
+
+        //}
+        public virtual double SubtractFromChecking(double withdrawFromAccount)
         {
             return withdrawFromAccount;
 
         }
-        public virtual decimal SubtractFromSavings()
+        public virtual double SubtractFromSavings(double withdrawFromAccount)
         {
             return withdrawFromAccount;
 
         }
-        public virtual decimal GetChkBalance()
-        {
-            return checkingAccountBalance;
-        }
-        public virtual decimal GetSavBalance()
-        {
-            return savingsAccountBalance;
-        }
+        
+        //public double SaveDepositAmount(double deposit)
+        //{
+        //    Deposit = deposit;
+        //    return Deposit;
+        //}
 
     }
 

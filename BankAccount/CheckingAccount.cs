@@ -4,56 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankAccount
+namespace BankAccount 
 {
     class CheckingAccount : Account
     {
-        protected decimal depositAmount;
-        protected decimal withdraw;
+        protected double checkingAccountBalance = 1000000;
+        protected double deposit;
+        protected double withdraw;
         
+        public double CheckingAccountBalance
+        {
+            get { return this.checkingAccountBalance; }
+            set { this.checkingAccountBalance = value; }
+        }   
+        public double Deposit { get; set; }
+        public double Withdraw { get; set; }
 
-        public decimal DepositAmount { get; set; }
-        public decimal Withdraw { get; set; }
-       
 
         public CheckingAccount()
         {
             //default constructor
         }
-        public CheckingAccount(decimal depositAmount, decimal withdraw, decimal checkingAccountBalance)
+        public CheckingAccount(double withdraw, double deposit)
         {
 
-            this.depositAmount = depositAmount;
+            this.deposit = deposit;
             this.withdraw = withdraw;
-            this.checkingAccountBalance = checkingAccountBalance;
+            
             
         }
 
-        public override decimal AddToCheckingAccount()
+        public double AddToChecking(double deposit)
+        {                       
+            return deposit = checkingAccountBalance + deposit;
+        }
+        public override double SubtractFromChecking(double withdraw)
         {
-
-            checkingAccountBalance += depositAmount;
+            return withdraw = checkingAccountBalance - withdraw;
+        }
+        public double GetChkBalance()
+        {
             return checkingAccountBalance;
-
         }
-        public override decimal SubtractFromChecking()
-        {
-
-            checkingAccountBalance -= withdraw;
-            return checkingAccountBalance;
-
-        }
-        public decimal DepositMade()
-        {
-            deposit = DepositAmount;
-            return deposit;
-        }
-        public decimal WithdrawalMade()
+        //public double SaveDepositMade(double deposit)
+        //{
+        //    deposit = Deposit;
+        //    return deposit;
+        //}
+        public double WithdrawalMade()
         {
             withdraw = Withdraw;
             return withdraw;
         }
-        //public override decimal GetChkBalance()
+        //public override double GetChkBalance()
         //{
         //    return checkingBalance;
         //}

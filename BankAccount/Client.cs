@@ -15,15 +15,13 @@ namespace BankAccount
         public double phoneNumber;
         protected int lastFourOfSocial;
         protected int birthYear;
-        public decimal addToChecking = 0.0m;
-        private decimal checkingAccountBalance = 0.0m;
-
+     
         public string FirstName { get; set; }
         public string LastName { get; set; }       
         public int HouseNumber { get; set; }
         public string StreetName { get; set; }
         public double PhoneNumber { get; set; }
-        public decimal AddToChecking { get; set; }
+      
         public int AccountNumber { get; }
 
 
