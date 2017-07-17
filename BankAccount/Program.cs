@@ -87,8 +87,8 @@ namespace BankAccount
                             Console.Clear();
 
                             menu1.TopLine();
-                            Console.WriteLine("\n\n\t\t\tHow much would you like to deposit today " +
-                                "in your checking account?");
+                            Console.WriteLine("\n\n\t\t\tHow much would you like to deposit " +
+                                "into your checking account?");
 
                             Console.Write("\n\n\t\t\tDeposit Amount: ");
                             deposit = double.Parse(Console.ReadLine());
@@ -97,7 +97,7 @@ namespace BankAccount
                             Console.Clear();
                             menu1.TopLine();
                             account3.CheckingAccountBalance = account3.AddToChecking(deposit);//used this operation to save the checking account balance
-                            Console.WriteLine("\n\n\t\t\tYour new balance is: " +
+                            Console.WriteLine("\n\n\t\t\tYour New Balance for Checking Account #" + client1.SearchForCheckAcctNum() + "is: " +
                                 account3.CheckingAccountBalance.ToString("C2"));
                             menu1.BottomLine();
 
@@ -109,7 +109,7 @@ namespace BankAccount
 
                             menu1.TopLine();
                             Console.WriteLine("\n\n\t\t\tHow much would you like to deposit " +
-                                "today in your savings account?");
+                                "into your savings account?");
 
                             Console.Write("\n\n\t\t\tDeposit Amount: ");
                             deposit = double.Parse(Console.ReadLine());
@@ -118,7 +118,7 @@ namespace BankAccount
                             Console.Clear();
                             menu1.TopLine();
                             account2.SavingsAccountBalance = account2.AddToSavingsAccount(deposit);//used this to save the savings balance
-                            Console.WriteLine("\n\n\t\t\tYour new balance is: " +
+                            Console.WriteLine("\n\n\t\t\tYour New Balance for Savings Account #" + client1.SearchForSavAcctNum() + "is: " +
                                 account2.SavingsAccountBalance.ToString("C2"));
                             menu1.BottomLine();
 
@@ -142,7 +142,7 @@ namespace BankAccount
                             Console.Clear();
                             menu1.TopLine();
                             Console.WriteLine("\n\n\t\t\tHow much would you like to withdraw today " +
-                                "in your checking account?");
+                                "from your checking account?");
                             Console.Write("\n\n\t\t\tWithdraw Amount: ");
                             withdraw = double.Parse(Console.ReadLine());
                             menu1.BottomLine();
@@ -179,7 +179,7 @@ namespace BankAccount
                             double minSavBal = account2.SavingsAccountBalance - 500; //equation to find minimum balance
                             menu1.TopLine();
                             Console.WriteLine("\n\n\t\t\tHow much would you like to withdraw " +
-                                "today in your savings account?");
+                                "today from your savings account?");
                             Console.Write("\n\n\t\t\tWithdraw Amount: ");
                             withdraw = double.Parse(Console.ReadLine());
                             menu1.BottomLine();
