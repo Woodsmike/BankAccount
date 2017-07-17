@@ -46,19 +46,16 @@ namespace BankAccount
         {
             return checkingAccountBalance;
         }
-        //public double SaveDepositMade(double deposit)
-        //{
-        //    deposit = Deposit;
-        //    return deposit;
-        //}
+        public double SaveDepositMade(double deposit)
+        {
+            deposit = Deposit;
+            return deposit;
+        }
         public double WithdrawalMade()
         {
             withdraw = Withdraw;
             return withdraw;
         }
-        //public override double GetChkBalance()
-        //{
-        //    return checkingBalance;
-        //}
+      
     }
 }

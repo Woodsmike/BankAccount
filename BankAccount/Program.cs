@@ -10,50 +10,45 @@ namespace BankAccount
     {
         static void Main(string[] args)
         {
-            string selectionKey = " ";
-            int number = 0;
-            string depositAmount;
-
+           
             Console.Clear();
-            Console.WriteLine("Welcome to Steal'em Robb'em Blind Bank!\n\n");
+            Intro intro1 = new Intro();
+            MainMenu menu1 = new MainMenu();
+            MainMenu CheckSav = new MainMenu();            
 
+            Client client1 = new Client("Capone", "Al", 6, " Feet Under Park",
+                        2120010001, 0001, 1899, 129094, 139982);
 
-            Client client2 = new Client("Capone", "Al", 6, " Feet Under Park",
-                        2120010001, 0001, 1899);
-
-
-            SavingsAccount account2 = new SavingsAccount();
             CheckingAccount account3 = new CheckingAccount();
+            SavingsAccount account2 = new SavingsAccount();
+            account3.CheckingAccountBalance = 25000;
+            account2.SavingsAccountBalance = 500000;
+            account3.AccountType = "Checking";
+            account2.AccountType = "Savings";
             double deposit;
             double withdraw;
-            int minSavBalance = 500;
+            string selectionKey = " ";
+            int number = 0;
 
+            intro1.Introduction();
             do
             {
-
-                Console.Clear();
-
-
-                Console.WriteLine(account2.GetSavBalance().ToString("C2"));
-                Console.WriteLine("MAIN MENU:");
-
-                Console.WriteLine("Please choose from the following options.\n");
-                Console.WriteLine("1. View Client Information");
-                Console.WriteLine("2. View Account Balance");
-                Console.WriteLine("3. Deposit Funds");
-                Console.WriteLine("4. Withdraw Funds");
-                Console.WriteLine("5. Exit");
+                Console.Clear();               
+                menu1.MenuMethod();
                 selectionKey = Console.ReadLine();
                 Console.Clear();
                 bool intResultTryParse = int.TryParse(selectionKey, out number);
+
                 if (selectionKey == "1")
                 {
-                    client2.ClientInfo();
+                    client1.ClientInfo();
                     AccountAnswer();
                 }
                 else if (selectionKey == "2")
                 {
-                    Console.WriteLine("a. Checking Account\nb. Savings account");
+                    CheckSav.ChckSavMenu();
+                    //Console.WriteLine("a. Checking Account\nb. Savings account");
+                    //selectionKey = Console.ReadLine();
                     selectionKey = Console.ReadLine();
                     Console.Clear();
 
@@ -61,176 +56,197 @@ namespace BankAccount
                     {
                         case "a":
                             account3.GetChkBalance().ToString("C2");
-                            Console.WriteLine("Your checking account balance is: " + account3.GetChkBalance().ToString("C2"));
+
+                            menu1.TopLine();              
+                            Console.WriteLine("\n\n\t\t\t\tYour Checking Account Balance: " 
+                                + account3.GetChkBalance().ToString("C2"));                            
+                            menu1.BottomLine();
+
                             AccountAnswer();
                             break;
 
 
                         case "b":
-
                             account2.GetSavBalance().ToString("C2");
-                            Console.WriteLine("Your savings account balance is: " + account2.GetSavBalance().ToString("C2"));
+
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\t\tYour Savings Account Balance: " + 
+                                account2.GetSavBalance().ToString("C2"));
+                            menu1.BottomLine();
+
                             AccountAnswer();
                             break;
 
                         default:
                             break;
                     }
-
                 }
                 else if (selectionKey == "3")
                 {
-                    Console.WriteLine("a. Checking Account\nb. Savings account");
-                    string accountAnswer = Console.ReadLine().ToLower();
+                    CheckSav.ChckSavMenuDeposit();
+                    string checkOrSave = Console.ReadLine().ToLower();
                     Console.Clear();
-                    switch (accountAnswer)
+                    switch (checkOrSave)
                     {
                         case "a":
-                            double tryParseDbl;
-                            deposit = 0;
                             Console.Clear();
-                            Console.WriteLine("How much would you like to deposit today " +
+
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tHow much would you like to deposit today " +
                                 "in your checking account?");
-                            depositAmount = Console.ReadLine().ToLower();
-                            Exit();
-                            while (double.TryParse(depositAmount, out tryParseDbl) == false)
-                            {
 
-                                Console.Write("Please enter a valid number or quit to exit: ");
-                                depositAmount = Console.ReadLine().ToUpper();
+                            Console.Write("\n\n\t\t\tDeposit Amount: ");
+                            deposit = double.Parse(Console.ReadLine());
+                            menu1.BottomLine();
 
-                                Exit();
-
-                                if (double.TryParse(depositAmount, out tryParseDbl) == true)
-                                {
-                                    deposit = double.Parse(depositAmount);
-                                }
-
-                            }
-                            //deposit = double.TryParse(Console.ReadLine() out deposit);
+                            Console.Clear();
+                            menu1.TopLine();
                             account3.CheckingAccountBalance = account3.AddToChecking(deposit);
-                            Console.WriteLine("Your new balance is :" +
+                            Console.WriteLine("\n\n\t\t\tYour new balance is :" +
                                 account3.CheckingAccountBalance.ToString("C2"));
+                            menu1.BottomLine();
 
-                            Console.WriteLine("Would you like to make another deposit?");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            AccountAnswer();
                             break;
 
                         case "b":
+                            Console.Clear();
 
-                            Console.WriteLine("How much would you like to deposit " +
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tHow much would you like to deposit " +
                                 "today in your savings account?");
 
+                            Console.Write("\n\n\t\t\tDeposit Amount: ");
                             deposit = double.Parse(Console.ReadLine());
-                            account2.SavingsAccountBalance = account2.AddToSavingsAccount(deposit);
-                            Console.WriteLine("Your new balance is :" +
-                                account2.SavingsAccountBalance.ToString("C2"));
+                            menu1.BottomLine();
 
-                            Console.WriteLine("Would you like to make another deposit?");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            Console.Clear();
+                            menu1.TopLine();
+                            account2.SavingsAccountBalance = account2.AddToSavingsAccount(deposit);
+                            Console.WriteLine("\n\n\t\t\tYour new balance is :" +
+                                account2.SavingsAccountBalance.ToString("C2"));
+                            menu1.BottomLine();
+
+                            AccountAnswer();
                             break;
 
 
                         default:
-
-                            Console.WriteLine("Continue");
+                            AccountAnswer();
                             break;
                     }
                 }
                 else if (selectionKey == "4")
                 {
-                    Console.WriteLine("a. Checking Account\nb. Savings account");
-                    string accountAnswer = Console.ReadLine().ToLower();
+                    CheckSav.ChckSavMenuWithdraw();
+                    string checkOrSave = Console.ReadLine().ToLower();
                     Console.Clear();
-                    switch (accountAnswer)
+                    switch (checkOrSave)
                     {
                         case "a":
                             Console.Clear();
-                            Console.WriteLine("How much would you like to withdraw today " +
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tHow much would you like to withdraw today " +
                                 "in your checking account?");
-
+                            Console.Write("\n\n\t\t\tWithdraw Amount: ");
                             withdraw = double.Parse(Console.ReadLine());
+                            menu1.BottomLine();
+                            Console.Clear();
+
                             do
                             {
+                                if (withdraw > account3.CheckingAccountBalance)
+                                {
+                                    menu1.TopLine();
+                                    Console.WriteLine("\n\n\t\t\t\t\t\tINSUFFICIENT FUNDS");
+                                    Console.WriteLine("\n\n\n\t\t\t\tAmount available for withdrawal: " +
+                                        account3.CheckingAccountBalance.ToString("C2"));
+                                    Console.Write("\n\t\t\t\tPlease enter a different amount.\n\n" +
+                                        "\t\t\t\tWithdraw Amount: ");
+                                    withdraw = double.Parse(Console.ReadLine());
+                                    menu1.BottomLine();
 
-                                Console.WriteLine("Insuffient Funds.");
-                                Console.WriteLine("Press enter a different amount or enter 'exit'.");
-                                withdraw = double.Parse(Console.ReadLine());
-                                Console.Clear();
-
+                                    Console.Clear();
+                                }
                             } while (withdraw > account3.CheckingAccountBalance);
 
                             account3.CheckingAccountBalance = account3.SubtractFromChecking(withdraw);
-                            Console.WriteLine("Your new balance is :" +
-                                account3.CheckingAccountBalance.ToString("C2"));
 
-                            Console.WriteLine("Would you like to make another withdraw?");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tYour new balance is :" +
+                                account3.CheckingAccountBalance.ToString("C2"));
+                            menu1.BottomLine();
+
+                            AccountAnswer();
                             break;
 
                         case "b":
-
-                            Console.WriteLine("How much would you like to withdraw " +
+                            double minSavBal = account2.SavingsAccountBalance - 500;
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tHow much would you like to withdraw " +
                                 "today in your savings account?");
-
+                            Console.Write("\n\n\t\t\tWithdraw Amount: ");
                             withdraw = double.Parse(Console.ReadLine());
+                            menu1.BottomLine();
+
+                            Console.Clear();
                             do
                             {
-
-                                Console.WriteLine("You may not withdraw below your minimum " +
-                                    "balance of $" + minSavBalance);
-                                Console.WriteLine("Press enter a different amount or enter 'exit'.");
-                                withdraw = double.Parse(Console.ReadLine());
-                                Console.Clear();
-
-                            } while (withdraw > account2.SavingsAccountBalance - minSavBalance);
-
-                            account2.SavingsAccountBalance = account2.SubtractFromChecking(withdraw);
-                            Console.WriteLine("Your new balance is :" +
+                                if (withdraw > minSavBal)
+                                {
+                                    menu1.TopLine();
+                                    Console.WriteLine("\n\n\t\t\t\t\t\tINSUFFICIENT FUNDS");
+                                    Console.WriteLine("\n\n\n\t\t\t\tAmount available for withdrawal: " +
+                                        minSavBal.ToString("C2"));
+                                    Console.Write("\n\t\t\t\tPlease enter a different amount.\n\n" +
+                                       "\t\t\t\tWithdraw Amount: ");
+                                    withdraw = double.Parse(Console.ReadLine());
+                                    menu1.BottomLine();
+                                    Console.Clear();
+                                }
+                            } while (withdraw > minSavBal);
+                            
+                            account2.SavingsAccountBalance = account2.SubtractFromSavings(withdraw);
+                            menu1.TopLine();
+                            Console.WriteLine("\n\n\t\t\tYour New Balance :" +
                                 account2.SavingsAccountBalance.ToString("C2"));
+                            menu1.BottomLine();
 
-                            Console.WriteLine("Would you like to make another withdraw?");
-                            accountAnswer = Console.ReadLine().ToLower();
+                            AccountAnswer();
                             break;
-
 
                         default:
-
-                            Console.WriteLine("Continue");
+                            Console.WriteLine("\n\n\t\t\tContinue");
                             break;
-
                     }
-
                 }
-                else
+                else if(selectionKey == "5")
                 {
                     Exit();
                 }
-
-            } while (selectionKey != "5");
-            Console.WriteLine("Please press the enter key" +
-            " or to go back to the main menu or type 'Exit' to quit.");
-
-
-            //} while (selectionKey != "5") ;
-
-
+                else
+                {
+                    AccountAnswer();
+                }
+            } while (selectionKey != "5");     
         }
+
         public static void Exit()
         {
-            
-            if (depositAmount == "exit")
-            {
-                Console.Clear();
-                Console.WriteLine("Thank you for banking at Steal'em Robb'em Blind Bank!");
-                Environment.Exit(0);
-                return;
-            }
+            Console.Clear();
+            Console.WriteLine("________________________________________________" +
+               "________________________________________________________________________\n\n");
+            Console.WriteLine("\n\n\t\t\tThank you for banking at Steal'em Robb'em Blind Bank!");
+            Console.WriteLine("\n\n_________________________________________________" +
+           "_______________________________________________________________________\n\n");
+            Environment.Exit(0);
+            return;
         }
+
         public static void AccountAnswer()
         {
             string accountAnswer;
-            Console.WriteLine("Please hit any key to continue");
+            Console.WriteLine("Please any key to continue");
             accountAnswer = Console.ReadLine().ToLower();
         }
     }

@@ -12,12 +12,13 @@ namespace BankAccount
         protected double savingsAccountBalance = 5000000;
         protected double deposit;
         protected double withdraw;
-
+       
         public double SavingsAccountBalance
         {
             get { return this.savingsAccountBalance; }
             set { this.savingsAccountBalance = value; }
         }
+       
         public double Deposit { get; set; }
         public double Withdraw { get; set; }
 
@@ -47,7 +48,7 @@ namespace BankAccount
         }
         public override double SubtractFromSavings(double withdraw)
         {
-            return withdraw -= savingsAccountBalance;
+            return savingsAccountBalance -= withdraw;
 
         }
         public double WithdrawalMade()
@@ -55,10 +56,6 @@ namespace BankAccount
             withdraw = Withdraw;
             return withdraw;
         }
-        //public double SaveDepositAmount(double deposit)
-        //{
-        //    deposit = Deposit;
-        //    return deposit;
-        //}
+      
     }
 }

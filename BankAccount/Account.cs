@@ -9,8 +9,8 @@ namespace BankAccount
     class Account
     {
         protected string accountType;
-        protected int checkingAccountNumber;
-        protected int savingsAccountNumber;
+        //protected int checkingAccountNumber;
+        //protected int savingsAccountNumber;
         //protected double deposit;
         //protected double withdrawFromAccount;
         
@@ -24,8 +24,8 @@ namespace BankAccount
         public Account(string accountType, int chkAccNum, int savAccNum)
         {
             this.accountType = accountType;
-            this.checkingAccountNumber = chkAccNum;
-            this.savingsAccountNumber = savAccNum;
+            //this.checkingAccountNumber = chkAccNum;
+            //this.savingsAccountNumber = savAccNum;
             //this.withdrawFromAccount = withDraw;
             //this.deposit = deposit;
          
@@ -69,12 +69,6 @@ namespace BankAccount
 
         }
         
-        //public double SaveDepositAmount(double deposit)
-        //{
-        //    Deposit = deposit;
-        //    return Deposit;
-        //}
-
     }
 
 }

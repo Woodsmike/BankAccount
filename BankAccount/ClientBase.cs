@@ -8,10 +8,18 @@ namespace BankAccount
 {
     abstract class ClientBase
     {
-        public virtual void SearchAccount(string lastName, string firstName,
-          int lastFourOfSocial, int birthYear)
-        {
+        protected int checkingAccountNumber;
+        protected int savingsAccountNumber;
 
+        public int CheckingAccountNumber { get; set; }
+        public int SavingsAccountNumber { get; set; }
+
+        
+
+        public virtual void SearchForAccountNumber(int checkingAccountNumber, int savingsAccountNumber)
+        {
+            this.checkingAccountNumber = checkingAccountNumber;
+            this.savingsAccountNumber = savingsAccountNumber;
         }
     }
 }

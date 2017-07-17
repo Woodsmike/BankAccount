@@ -30,7 +30,8 @@ namespace BankAccount
             //default constructor
         }
         public Client(string lastName, string firstName, int houseNumber, string streetName,
-            double phoneNumber, int lastFourOfSocial, int birthYear)
+            double phoneNumber, int lastFourOfSocial, int birthYear, int savingsAccountNumber, 
+            int checkingAccountNumber)
         {
             this.lastName = lastName;
             this.firstName = firstName;
@@ -39,30 +40,33 @@ namespace BankAccount
             this.phoneNumber = phoneNumber;
             this.lastFourOfSocial = lastFourOfSocial;
             this.birthYear = birthYear;
+            this.checkingAccountNumber = checkingAccountNumber;
+            this.savingsAccountNumber = savingsAccountNumber;
          
             
         }
         public virtual void ClientInfo()
         {
-            Console.WriteLine("Customer's name: {0} {1} ", firstName, lastName);
-            Console.WriteLine("Customer's address : {0} {1} ", houseNumber, streetName);
-            Console.WriteLine("Customer's phone number (cell) {0} ", phoneNumber);
+            
+            Console.WriteLine("________________________________________________" +
+            "________________________________________________________________________\n\n");
+            Console.WriteLine("\t\t\t\tCustomer's Account Information\n\n\n\n");
+            Console.WriteLine("\t\t\t\tCustomer's First Name:      {0}\n", firstName);
+            Console.WriteLine("\t\t\t\tCustomer's Last Name:       {0}\n", lastName);
+            Console.WriteLine("\t\t\t\tCustomer's Home Address:    {0} {1} \n", houseNumber, streetName);
+            Console.WriteLine("\t\t\t\tCustomer's Phone Number:    {0} \n", phoneNumber);
+            Console.WriteLine("\t\t\t\tCustomer's Checking Acct#:  {0}\n", checkingAccountNumber);
+            Console.WriteLine("\t\t\t\tCustomer's Savings Acct#:   {0}\n", savingsAccountNumber);
+            Console.WriteLine("\n\n_________________________________________________" +
+            "_______________________________________________________________________\n\n");
         }
-
+       
         
-        public override void SearchAccount(string lastName, string firstName,
-          int lastFourOfSocial, int birthYear)
+        public override void SearchForAccountNumber(int checkingAccountNumber, int savingsAccountNumber)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.birthYear = birthYear;
-            this.lastFourOfSocial = lastFourOfSocial;
-
-            if (lastFourOfSocial == this.lastFourOfSocial)
-            {
-                Console.WriteLine(firstName + "\n" + lastName + "\n" + birthYear + "\n" + lastFourOfSocial);
-            }
-
+            this.checkingAccountNumber = checkingAccountNumber;
+            this.savingsAccountNumber = savingsAccountNumber;
+            
         }
     }
 }
