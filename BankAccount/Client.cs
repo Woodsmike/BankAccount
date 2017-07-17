@@ -13,7 +13,7 @@ namespace BankAccount
         private string firstName;
         public int houseNumber;
         public string streetName;
-        public double phoneNumber;
+        public string phoneNumber;
         protected int lastFourOfSocial;
         protected int birthYear;
      
@@ -21,7 +21,7 @@ namespace BankAccount
         public string LastName { get; set; }       
         public int HouseNumber { get; set; }
         public string StreetName { get; set; }
-        public double PhoneNumber { get; set; }      
+        public string PhoneNumber { get; set; }      
         public int AccountNumber { get; }
 
 
@@ -31,7 +31,7 @@ namespace BankAccount
         }
 
         public Client(string lastName, string firstName, int houseNumber, string streetName,
-            double phoneNumber, int lastFourOfSocial, int birthYear, int savingsAccountNumber, 
+            string phoneNumber, int lastFourOfSocial, int birthYear, int savingsAccountNumber, 
             int checkingAccountNumber)
         {
             this.lastName = lastName;

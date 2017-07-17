@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    class Account
+    class Account   //Parent class to Checking and Savings account classes
     {
-        protected int checkingAccountNumber;
+        protected int checkingAccountNumber; //set fields
         protected int savingsAccountNumber;
         protected string accountType;        
         
-        public string AccountType { get; set; }
+        public string AccountType { get; set; }  //set properties
         public int CheckingAccountNumber { get; set; }
         public int SavingsAccountNumber { get; set; }
-                
-
-        public Account(string accountType, int chkAccNum, int savAccNum)
-        {
-            this.accountType = accountType;
-            this.checkingAccountNumber = chkAccNum;
-            this.savingsAccountNumber = savAccNum;
-        }
 
         public Account()
         {
             //default constructor
         }
 
-        public virtual string GetAccountType()
+        public Account(string accountType, int chkAccNum, int savAccNum) //second constructor
+        {
+            this.accountType = accountType;
+            this.checkingAccountNumber = chkAccNum;
+            this.savingsAccountNumber = savAccNum;
+        }
+
+        public virtual string GetAccountType()  //set some virtual methods
         {
             return AccountType;
         }

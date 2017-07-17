@@ -8,7 +8,7 @@ namespace BankAccount
 {
     class SavingsAccount : Account  //this class derived from Accont
     {
-        protected double savingsAccountBalance = 5000000;
+        protected double savingsAccountBalance = 5000000; //set fields
         protected double deposit;
         protected double withdraw;
         protected string savingsAccountType;
@@ -19,7 +19,7 @@ namespace BankAccount
             set { this.savingsAccountBalance = value; }
         }
 
-        public double Deposit { get; set; }
+        public double Deposit { get; set; }  //set more properites
         public double Withdraw { get; set; }
         public string SavingsAccountType { get; set; }
 
@@ -28,7 +28,7 @@ namespace BankAccount
             //default constructor
         }
 
-        public SavingsAccount(double withdraw, double deposit)
+        public SavingsAccount(double withdraw, double deposit) //second constructor
         {
             this.withdraw = withdraw;
             this.deposit = deposit;

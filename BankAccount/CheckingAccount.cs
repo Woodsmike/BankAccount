@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BankAccount 
 {
-    class CheckingAccount : Account
+    class CheckingAccount : Account  //this account is derived from Account parent class
     {
-        protected double checkingAccountBalance = 1000000;
+        protected double checkingAccountBalance = 1000000;  //set fields
         protected double deposit;
         protected double withdraw;
         protected string checkingAccountType;
         
-        public double CheckingAccountBalance
+        public double CheckingAccountBalance  //set properties
         {
             get { return this.checkingAccountBalance; }
             set { this.checkingAccountBalance = value; }
@@ -26,7 +26,7 @@ namespace BankAccount
         {
             //default constructor
         }
-        public CheckingAccount(double withdraw, double deposit)
+        public CheckingAccount(double withdraw, double deposit)  //second constructor
         {
             this.deposit = deposit;
             this.withdraw = withdraw;            
@@ -62,7 +62,7 @@ namespace BankAccount
         public override string GetAccountType()  
         {
             checkingAccountType = accountType;
-            return accountType;
+            return checkingAccountType;
         }
     }
 }

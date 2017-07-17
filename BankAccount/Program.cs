@@ -17,8 +17,8 @@ namespace BankAccount
             MainMenu CheckSav = new MainMenu(); //Instantiated an object for the different
                                                  //checking and saving menus
 
-            Client client1 = new Client("Capone", "Al", 6, " Feet Under Park",
-                        2120010001, 0001, 1899, 1292094, 1359982); //Instantiated a new client object
+            Client client1 = new Client("Capone", "Al", 6, "Feet Under Park",
+                        "212-001-0001", 0001, 1899, 1292094, 1359982); //Instantiated a new client object
 
             CheckingAccount account3 = new CheckingAccount();//Instantiated a new checking acct object
             SavingsAccount account2 = new SavingsAccount();//Instantiated a new savings acct object
@@ -82,7 +82,7 @@ namespace BankAccount
                     Console.Clear();
                     switch (checkOrSave) //used a switch case for user to pick between check/savings
                     {
-                        case "a":
+                        case "a":  //this is for checking
                             Console.Clear();
 
                             menu1.TopLine();
@@ -103,7 +103,7 @@ namespace BankAccount
                             AccountAnswer();
                             break;
 
-                        case "b":
+                        case "b":  //did the same thing as case "a" but for savings
                             Console.Clear();
 
                             menu1.TopLine();
@@ -241,7 +241,7 @@ namespace BankAccount
         public static void AccountAnswer()  //used throughout program
         {
             string accountAnswer;
-            Console.WriteLine("Please any key to continue");
+            Console.WriteLine("\n\n\t\t\t\tPlease any key to continue");
             accountAnswer = Console.ReadLine().ToLower();
         }
     }
