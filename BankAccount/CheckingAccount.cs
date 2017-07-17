@@ -11,6 +11,7 @@ namespace BankAccount
         protected double checkingAccountBalance = 1000000;
         protected double deposit;
         protected double withdraw;
+        protected string checkingAccountType;
         
         public double CheckingAccountBalance
         {
@@ -19,7 +20,7 @@ namespace BankAccount
         }   
         public double Deposit { get; set; }
         public double Withdraw { get; set; }
-
+        public string CheckingAccountType { get; set; }
 
         public CheckingAccount()
         {
@@ -27,35 +28,41 @@ namespace BankAccount
         }
         public CheckingAccount(double withdraw, double deposit)
         {
-
             this.deposit = deposit;
-            this.withdraw = withdraw;
-            
-            
+            this.withdraw = withdraw;            
         }
 
-        public double AddToChecking(double deposit)
+
+        public double AddToChecking(double deposit) // used this method to add to checking balance
         {                       
             return deposit = checkingAccountBalance + deposit;
         }
-        public override double SubtractFromChecking(double withdraw)
+
+        public override double SubtractFromChecking(double withdraw) //used to method to subtract from checking balance
         {
             return withdraw = checkingAccountBalance - withdraw;
         }
-        public double GetChkBalance()
+
+        public double GetChkBalance()  //used this method to get checking balance
         {
             return checkingAccountBalance;
         }
-        public double SaveDepositMade(double deposit)
+
+        public double SaveDepositMade(double deposit) //did not used this one
         {
             deposit = Deposit;
             return deposit;
         }
-        public double WithdrawalMade()
+
+        public double WithdrawalMade()  //did not used this one
         {
             withdraw = Withdraw;
             return withdraw;
         }
-      
+        public override string GetAccountType()  
+        {
+            checkingAccountType = accountType;
+            return accountType;
+        }
     }
 }

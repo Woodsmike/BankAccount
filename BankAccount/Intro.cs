@@ -12,7 +12,8 @@ namespace BankAccount
         {
             string userName;
             string password;
-            do
+
+            do  //made this class to make the user input the correct logon information
             {
                 Console.Clear();
                 Console.WriteLine("________________________________________________" +

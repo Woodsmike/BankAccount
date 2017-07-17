@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    class SavingsAccount : Account
+    class SavingsAccount : Account  //this class derived from Accont
     {
-
         protected double savingsAccountBalance = 5000000;
         protected double deposit;
         protected double withdraw;
-       
-        public double SavingsAccountBalance
+        protected string savingsAccountType;
+
+        public double SavingsAccountBalance  //used this property to store savings acct. information
         {
             get { return this.savingsAccountBalance; }
             set { this.savingsAccountBalance = value; }
         }
-       
+
         public double Deposit { get; set; }
         public double Withdraw { get; set; }
-
+        public string SavingsAccountType { get; set; }
 
         public SavingsAccount()
         {
@@ -30,32 +30,37 @@ namespace BankAccount
 
         public SavingsAccount(double withdraw, double deposit)
         {
-
             this.withdraw = withdraw;
-            this.deposit = deposit;       
-
+            this.deposit = deposit;
+            
         }
 
 
-        public double AddToSavingsAccount(double deposit)
+        public double AddToSavingsAccount(double deposit)  //used this method to add to the savings acct
         {
             return deposit += savingsAccountBalance;
-
         }
+
         public double GetSavBalance()
         {
             return savingsAccountBalance;
         }
-        public override double SubtractFromSavings(double withdraw)
+
+        public override double SubtractFromSavings(double withdraw) //used this from a virtual method from the parent class
         {
             return savingsAccountBalance -= withdraw;
-
         }
+
+        public override string GetAccountType()
+        {
+            savingsAccountType = accountType;
+            return savingsAccountType;
+        }
+
         public double WithdrawalMade()
         {
             withdraw = Withdraw;
             return withdraw;
-        }
-      
+        }      
     }
 }

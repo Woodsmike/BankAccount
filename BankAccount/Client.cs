@@ -8,6 +8,7 @@ namespace BankAccount
 {
     class Client : ClientBase
     {
+        //
         private string lastName;
         private string firstName;
         public int houseNumber;
@@ -20,8 +21,7 @@ namespace BankAccount
         public string LastName { get; set; }       
         public int HouseNumber { get; set; }
         public string StreetName { get; set; }
-        public double PhoneNumber { get; set; }
-      
+        public double PhoneNumber { get; set; }      
         public int AccountNumber { get; }
 
 
@@ -29,6 +29,7 @@ namespace BankAccount
         {
             //default constructor
         }
+
         public Client(string lastName, string firstName, int houseNumber, string streetName,
             double phoneNumber, int lastFourOfSocial, int birthYear, int savingsAccountNumber, 
             int checkingAccountNumber)
@@ -38,16 +39,14 @@ namespace BankAccount
             this.houseNumber = houseNumber;
             this.streetName = streetName;
             this.phoneNumber = phoneNumber;
-            this.lastFourOfSocial = lastFourOfSocial;
-            this.birthYear = birthYear;
+            this.lastFourOfSocial = lastFourOfSocial;  //was going to use for logon - didn't get to it
+            this.birthYear = birthYear;  //was going to use for logon - didn't get to it
             this.checkingAccountNumber = checkingAccountNumber;
-            this.savingsAccountNumber = savingsAccountNumber;
-         
-            
+            this.savingsAccountNumber = savingsAccountNumber;                 
         }
-        public virtual void ClientInfo()
-        {
-            
+
+        public virtual void ClientInfo()  //method for client info section
+        {            
             Console.WriteLine("________________________________________________" +
             "________________________________________________________________________\n\n");
             Console.WriteLine("\t\t\t\tCustomer's Account Information\n\n\n\n");
@@ -59,14 +58,14 @@ namespace BankAccount
             Console.WriteLine("\t\t\t\tCustomer's Savings Acct#:   {0}\n", savingsAccountNumber);
             Console.WriteLine("\n\n_________________________________________________" +
             "_______________________________________________________________________\n\n");
-        }
-       
+        }       
         
+        //made below to input in the above ClientInfo method
+        //this method also came from the abstract parent class
         public override void SearchForAccountNumber(int checkingAccountNumber, int savingsAccountNumber)
         {
             this.checkingAccountNumber = checkingAccountNumber;
-            this.savingsAccountNumber = savingsAccountNumber;
-            
+            this.savingsAccountNumber = savingsAccountNumber;            
         }
     }
 }

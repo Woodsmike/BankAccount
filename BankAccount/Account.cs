@@ -8,67 +8,50 @@ namespace BankAccount
 {
     class Account
     {
-        protected string accountType;
-        //protected int checkingAccountNumber;
-        //protected int savingsAccountNumber;
-        //protected double deposit;
-        //protected double withdrawFromAccount;
+        protected int checkingAccountNumber;
+        protected int savingsAccountNumber;
+        protected string accountType;        
         
         public string AccountType { get; set; }
         public int CheckingAccountNumber { get; set; }
         public int SavingsAccountNumber { get; set; }
-        //public double WithdrawFromAccount { get; set; }          
-        //public double Deposit { get; set; }
-        
+                
 
         public Account(string accountType, int chkAccNum, int savAccNum)
         {
             this.accountType = accountType;
-            //this.checkingAccountNumber = chkAccNum;
-            //this.savingsAccountNumber = savAccNum;
-            //this.withdrawFromAccount = withDraw;
-            //this.deposit = deposit;
-         
+            this.checkingAccountNumber = chkAccNum;
+            this.savingsAccountNumber = savAccNum;
         }
 
         public Account()
         {
             //default constructor
         }
+
         public virtual string GetAccountType()
         {
             return AccountType;
         }
+
         public virtual int GetCheckAccNumber()
         {
             return CheckingAccountNumber;
         }
+
         public virtual int GetSavingsAccNumber()
         {
             return SavingsAccountNumber;
         }
-        //public virtual double AddToCheckingAccount(double deposit)
-        //{
-            
-        //    return deposit;
-
-        //}
-        //public virtual double AddToSavingsAccount(double deposit)
-        //{
-        //    return deposit;
-
-        //}
+       
         public virtual double SubtractFromChecking(double withdrawFromAccount)
         {
             return withdrawFromAccount;
-
         }
+
         public virtual double SubtractFromSavings(double withdrawFromAccount)
         {
             return withdrawFromAccount;
-
-        }
-        
+        }        
     }
-
 }

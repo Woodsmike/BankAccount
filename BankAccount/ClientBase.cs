@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    abstract class ClientBase
+    abstract class ClientBase  //my abstract class
     {
         protected int checkingAccountNumber;
         protected int savingsAccountNumber;
