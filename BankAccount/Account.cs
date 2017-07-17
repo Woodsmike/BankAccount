@@ -33,12 +33,12 @@ namespace BankAccount
             return AccountType;
         }
 
-        public virtual int GetCheckAccNumber()
+        public int GetCheckAccNumber()
         {
             return CheckingAccountNumber;
         }
 
-        public virtual int GetSavingsAccNumber()
+        public int GetSavingsAccNumber()
         {
             return SavingsAccountNumber;
         }

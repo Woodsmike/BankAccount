@@ -20,6 +20,7 @@ namespace BankAccount
             Client client1 = new Client("Capone", "Al", 6, "Feet Under Park",
                         "212-001-0001", 0001, 1899, 1292094, 1359982); //Instantiated a new client object
 
+            
             CheckingAccount account3 = new CheckingAccount();//Instantiated a new checking acct object
             SavingsAccount account2 = new SavingsAccount();//Instantiated a new savings acct object
             account3.AccountType = "Checking";
@@ -54,9 +55,9 @@ namespace BankAccount
                     {
                         case "a":                           
                             menu1.TopLine();  //called this method several times during program for top line on screen            
-                            Console.WriteLine("\n\n\t\t\t\tYour Checking Account Balance: " 
-                                + account3.GetChkBalance().ToString("C2"));  //used this method from the CheckingAccount 
-                                                                              //to get the account balance
+                            Console.WriteLine("\n\n\t\t\t\tChecking Account Number #" + client1.SearchForCheckAcctNum() + "\n\n\t\t\t\tBalance: " 
+                                + account3.GetChkBalance().ToString("C2"));  //used this abstract method from the parent account of the Checking Account Class to get the account number
+                                                                             //also used the method from the Checking Account Class to get the account balance.
                             menu1.BottomLine();  //called this method several times during program for bottom line on screen
                             AccountAnswer(); //Method from below to ask user to press any key to continue
                             break;
@@ -64,9 +65,9 @@ namespace BankAccount
 
                         case "b":                           
                             menu1.TopLine();
-                            Console.WriteLine("\n\n\t\t\t\tYour Savings Account Balance: " + 
-                                account2.GetSavBalance().ToString("C2")); //used this method from the CheckingAccount 
-                                                                          //to get the account balance
+                            Console.WriteLine("\n\n\t\t\t\tSavings Account Number #" + client1.SearchForSavAcctNum() + "\n\n\t\t\t\tBalance: " 
+                               + account2.GetSavBalance().ToString("C2")); //used this abstract method from the parent account of the Savings Account Class to get the account number
+                                                                          //also used the method from the Savings Account Class to get the account balance.
                             menu1.BottomLine();
                             AccountAnswer();
                             break;

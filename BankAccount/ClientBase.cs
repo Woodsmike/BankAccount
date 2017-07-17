@@ -20,10 +20,16 @@ namespace BankAccount
         }
 
         // set this method for the child class to use
-        public virtual void SearchForAccountNumber(int checkingAccountNumber, int savingsAccountNumber)
+        public virtual int SearchForCheckAcctNum(int checkingAccountNumber)
         {
             this.checkingAccountNumber = checkingAccountNumber;
+            return checkingAccountNumber;
+        }
+
+        public virtual int SearchForSavAcctNum(int savingsAccountNumber)
+        {            
             this.savingsAccountNumber = savingsAccountNumber;
+            return savingsAccountNumber;
         }
     }
 }

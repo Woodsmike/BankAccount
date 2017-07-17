@@ -58,14 +58,18 @@ namespace BankAccount
             Console.WriteLine("\t\t\t\tCustomer's Savings Acct#:   {0}\n", savingsAccountNumber);
             Console.WriteLine("\n\n_________________________________________________" +
             "_______________________________________________________________________\n\n");
-        }       
-        
+        }
+
         //made below to input in the above ClientInfo method
         //this method also came from the abstract parent class
-        public override void SearchForAccountNumber(int checkingAccountNumber, int savingsAccountNumber)
+        public int SearchForCheckAcctNum()
         {
-            this.checkingAccountNumber = checkingAccountNumber;
-            this.savingsAccountNumber = savingsAccountNumber;            
+            return checkingAccountNumber;
+        }
+
+        public int SearchForSavAcctNum()
+        {
+            return savingsAccountNumber;
         }
     }
 }
