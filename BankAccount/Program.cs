@@ -97,7 +97,7 @@ namespace BankAccount
                             Console.Clear();
                             menu1.TopLine();
                             account3.CheckingAccountBalance = account3.AddToChecking(deposit);//used this operation to save the checking account balance
-                            Console.WriteLine("\n\n\t\t\tYour New Balance for Checking Account #" + client1.SearchForCheckAcctNum() + "is: " +
+                            Console.WriteLine("\n\n\t\t\tYour New Balance for Checking Account #" + client1.SearchForCheckAcctNum() + " is: " +
                                 account3.CheckingAccountBalance.ToString("C2"));
                             menu1.BottomLine();
 
@@ -118,7 +118,7 @@ namespace BankAccount
                             Console.Clear();
                             menu1.TopLine();
                             account2.SavingsAccountBalance = account2.AddToSavingsAccount(deposit);//used this to save the savings balance
-                            Console.WriteLine("\n\n\t\t\tYour New Balance for Savings Account #" + client1.SearchForSavAcctNum() + "is: " +
+                            Console.WriteLine("\n\n\t\t\tYour New Balance for Savings Account #" + client1.SearchForSavAcctNum() + " is: " +
                                 account2.SavingsAccountBalance.ToString("C2"));
                             menu1.BottomLine();
 
